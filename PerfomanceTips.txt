@@ -1,0 +1,55 @@
+Problem
+An enterprise application built using microservices architecture can have numerous microservices.
+The Eureka Server registers the microservices. Eureka server ensures high-availability.
+The state about the registered microservices is replicated to other eureka servers.
+ 
+
+Solution
+Service Registry and Discovery
+Ready made, battle-tested and ensures high availability.
+
+What?
+Service Registry and Discovery
+
+Why?
+To register and discover all the microservices in the enterprise project.
+
+When?
+In microservices architecture
+
+Pros/Cons.
+	Pro
+		1. Simple
+		2. Integrates well in other netflix modules
+		3. Handles failures gracefully through peer to peer replication
+	Cons
+		1. Latency due to replication
+		2. Netflix has no in-built security features like authentication
+		Best Practices
+
+How?
+1. Go to Spring initializer and include spring cloud to generate the project.
+2. Import project and include netflix eureka server dependency.
+3. Configure application.properties or application.yml
+4. Annotate main class of the project with @EnableEurekaServer
+5. Have eureka client projects created.
+6. Start application.
+
+
+Concept (Understood well): 
+1. Service Registry - allows to register a microservice/s
+2. Service Discovery - allows to communicate with other services
+3. High availability - ensures that the servers availabilty is up 24/7
+4. Load balancing - it makes communcating with other microservices much more easier by calling only its service name
+5. Easy to implement - it makes the developer's job much more easier
+
+
+Create Code >  Execute > Verify Result
+TRY ALTERNATE APPROACHES 
+
+
+Why?
+(Think <=> explore) apply and express or articulate
+
+1. Service Discovery: Eureka Clients
+Service Discovery is one of the key tenets of a microservice-based architecture. Trying to hand-configure each client or some form of convention can be difficult to do and can be brittle. Eureka is the Netflix Service Discovery Server and Client. The server can be configured and deployed to be highly available, with each server replicating state about the registered services to the others.

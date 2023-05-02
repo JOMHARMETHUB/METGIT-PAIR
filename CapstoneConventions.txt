@@ -1,0 +1,38 @@
+
+Ideal Solution
+naming conventions: MS1-EurekaServer-v1
+					MS1-EurekaServer-v2
+					MS2-ApiGateway-v1
+					[MS3-AuthenticationService-v1]
+					MS6-UserService-v1 [UserDb]
+					MS7-PlayerService-v1 [PlayerDb]
+					MS8-MatchService-v1	[MatchDb]
+					MS9-TournamentService-v1 [TournamentDb]
+					MS10-FieldService-v1 [FieldDb]
+					MS11-TicketService-v1 [TicketDb]
+					
+	
+
+Recommended Solution
+naming conventions: MS1-EurekaServer-v1 > MS1-DiscoveryServer-v1 > MS1-ServiceRegistry-v1  : MS1-EurekaServer-v2
+					MS2-ApiGateway-v1
+					[MS3-AuthenticationService-v1]
+					
+					MS6-UserService+Login-v1 [UserDb]
+					MS7-TeamPlayerService-v1 [TeamDb]
+					MS8-TournamentMatchService-v1 [TournamentDb]
+					MS10-FieldService-v1 [FieldDb]
+					MS11-TicketService-v1 [TicketDb]	
+					
+Current Solution
+naming conventions: MS1-EurekaServer-v1
+					MS2-ApiGateway-v1
+					MS6-UserService+Login-v1 [UserDb]
+					[MS3-AuthenticationService-v1]
+					MS7-TeamPlayerService-v1 [PlayerDb with Player and Team tables]
+					MS8-TournamentMatchFieldService-v1 [TournamentDb]
+					MS9-TicketService-v1 [TicketDb]
+					
+					
+prop : server port, app name,  jpa,
+yml : microservices specific settings
