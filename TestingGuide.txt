@@ -1,0 +1,46 @@
+1. Entity : Test for values
+    @Test
+    public void whenInitialized_returnTournamentEntity() {
+        TournamentEntity expected = new TournamentEntity();
+        TournamentEntity actual = getTournamentEntity();
+        expected.setTournamentId(1);
+        expected.setTournamentName("test");
+        expected.setTournamentStyle("test");
+        expected.setSportsCategory("test");
+        expected.setActive(true);
+        Assert.assertEquals(expected.getTournamentId(), actual.getTournamentId());
+        Assert.assertEquals(expected.getTournamentName(), actual.getTournamentName());
+        Assert.assertEquals(expected.getTournamentStyle(), actual.getTournamentStyle());
+        Assert.assertEquals(expected.getSportsCategory(), actual.getSportsCategory());
+        Assert.assertEquals(expected.getActive(), actual.getActive());
+    }
+	
+2. Test for exceptions
+	@Test(expected = NullPointerException.class)
+	public void whenIdNull_returnException() {
+//        ExpectedException exception = ExpectedException.none();
+ //       exception.expect(NullPointerException.class);
+		TournamentEntity tournament = new TournamentEntity();
+		tournament.setTournamentId(null);
+	}
+
+3. Service : Test for Save
+	@Test
+    public void givenValidRequestModel_whenSaveTournament_returnTournament() {
+        TournamentRequestModel tournament = getTournamentRequestModel();
+        TournamentEntity expected = getTournamentEntity();
+        when(tournamentRepository.saveAndFlush(any(TournamentEntity.class))).thenReturn(getTournamentEntity());
+        TournamentEntity result = tournamentService.saveAndReturnTournament(tournament);
+        Assert.assertEquals(expected.toString(), result.toString());
+    }
+	
+4. Controller: Test for Save
+	@Test
+    public void givenAuthenticatedUser_whenSaveTournament_returnMessage_Simple() throws Exception {
+        when(tournamentService.saveTournament(any(TournamentRequestModel.class))).thenReturn("Tournament saved successfully.");
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/tournaments")
+                        .contentType("application/json")
+                        .content(asJsonString(getTournamentRequestModel())))
+                .andExpect(status().is(201))
+                .andExpect(content().string("Tournament saved successfully."));
+    }
