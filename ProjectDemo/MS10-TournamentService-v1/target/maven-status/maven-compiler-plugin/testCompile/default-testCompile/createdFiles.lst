@@ -1,0 +1,4 @@
+com\sportingevents\tournament\TournamentServiceTest.class
+com\sportingevents\tournament\TournamentControllerTest.class
+com\sportingevents\tournament\TournamentEntityTest.class
+com\sportingevents\SportingTournamentServiceApplicationTests.class
